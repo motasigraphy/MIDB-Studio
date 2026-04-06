@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouatassime ID Bourhim — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        accent: '#4ade80',
+        dark: { 900: '#0a0a0c', 800: '#111115', 700: '#1a1a20', 600: '#22222a' }
+      }
+    }
+  }
+}
+</script>
+  <style>
+html, body { height: 100%; margin: 0; }
+* { box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: #0a0a0c; color: #e4e4e7; }
+.font-syne { font-family: 'Syne', sans-serif; }
+.font-space { font-family: 'Space Grotesk', sans-serif; }
+
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.glass-strong {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.glow-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.glow-card:hover {
+  border-color: rgba(74,222,128,0.3);
+  box-shadow: 0 0 30px rgba(74,222,128,0.06);
+  transform: translateY(-2px);
+}
+.nav-link { position: relative; transition: color 0.3s; }
+.nav-link::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
+  height: 1px; background: #4ade80; transition: width 0.3s;
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link:hover, .nav-link.active { color: #4ade80; }
+
+.fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; } .delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; } .delay-6 { animation-delay: 0.6s; }
+
+.hero-bg {
+  background: radial-gradient(ellipse at 30% 20%, rgba(74,222,128,0.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(74,222,128,0.02) 0%, transparent 50%),
+              #0a0a0c;
+}
+.grain::before {
+  content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.015; pointer-events: none; z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.project-img {
+  background: linear-gradient(135deg, #1a1a20 0%, #22222a 100%);
+  position: relative; overflow: hidden;
+}
+.project-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,12,0.8) 0%, transparent 50%);
+}
+.gallery-item {
+  position: relative; overflow: hidden; cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.gallery-item:hover { transform: scale(1.02); }
+.gallery-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,12,0.6) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.gallery-item:hover::after { opacity: 1; }
+
+.btn-primary {
+  background: #4ade80; color: #0a0a0c; font-weight: 600;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.btn-primary:hover { box-shadow: 0 0 25px rgba(74,222,128,0.3); transform: translateY(-1px); }
+.btn-outline {
+  border: 1px solid rgba(255,255,255,0.15); color: #e4e4e7;
+  transition: all 0.3s;
+}
+.btn-outline:hover { border-color: #4ade80; color: #4ade80; }
+
+input, textarea {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  color: #e4e4e7 !important; transition: border-color 0.3s !important;
+}
+input:focus, textarea:focus {
+  border-color: rgba(74,222,128,0.4) !important;
+  outline: none !important;
+  box-shadow: 0 0 15px rgba(74,222,128,0.05) !important;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0c; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+.section-line { width: 40px; height: 2px; background: #4ade80; }
+
+.page { display: none; }
+.page.active { display: block; }
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full grain">
+  <div id="app" class="h-full w-full overflow-auto" style="scroll-behavior:smooth;"><!-- NAV -->
+   <nav class="fixed top-0 left-0 w-full z-50 glass-strong">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"><a href="#" onclick="navigate('home');return false" class="font-syne font-bold text-lg tracking-tight" id="nav-logo">M<span style="color:#4ade80">.</span>IDB</a>
+     <div class="hidden md:flex items-center gap-8"><a href="#" onclick="navigate('home');return false" class="nav-link font-space text-sm tracking-wide active" data-nav="home">Home</a> <a href="#" onclick="navigate('about');return false" class="nav-link font-space text-sm tracking-wide" data-nav="about">About</a> <a href="#" onclick="navigate('projects');return false" class="nav-link font-space text-sm tracking-wide" data-nav="projects">Projects</a> <a href="#" onclick="navigate('contact');return false" class="nav-link font-space text-sm tracking-wide" data-nav="contact">Contact</a>
+     </div><button onclick="toggleMobile()" class="md:hidden text-white"><i data-lucide="menu" style="width:22px;height:22px;"></i></button>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-5 pt-1">
+     <div class="flex flex-col gap-4"><a href="#" onclick="navigate('home');toggleMobile();return false" class="nav-link font-space text-sm" data-nav="home">Home</a> <a href="#" onclick="navigate('about');toggleMobile();return false" class="nav-link font-space text-sm" data-nav="about">About</a> <a href="#" onclick="navigate('projects');toggleMobile();return false" class="nav-link font-space text-sm" data-nav="projects">Projects</a> <a href="#" onclick="navigate('contact');toggleMobile();return false" class="nav-link font-space text-sm" data-nav="contact">Contact</a>
+     </div>
+    </div>
+   </nav><!-- ========== HOME ========== -->
+   <div id="page-home" class="page active">
+    <section class="hero-bg w-full flex items-center justify-center" style="min-height:100%;padding-top:80px;">
+     <div class="max-w-5xl mx-auto px-6 text-center">
+      <div class="fade-in">
+       <p class="font-space text-xs tracking-[0.3em] uppercase mb-6" style="color:rgba(255,255,255,0.4);">Portfolio — 2025</p>
+      </div>
+      <h1 class="font-syne font-extrabold leading-[1.05] mb-6 fade-in delay-1" id="hero-name"><span class="block text-4xl sm:text-5xl md:text-7xl">Mouatassime</span> <span class="block text-4xl sm:text-5xl md:text-7xl">ID Bourhim</span></h1>
+      <div class="flex items-center justify-center gap-3 mb-8 fade-in delay-2"><span class="font-space text-sm md:text-base" style="color:#4ade80;">Digital Product Development</span> <span style="color:rgba(255,255,255,0.2);">✦</span> <span class="font-space text-sm md:text-base" style="color:#4ade80;">Visual Production</span>
+      </div>
+      <p class="font-space text-sm md:text-base max-w-lg mx-auto mb-10 fade-in delay-3" id="hero-tagline" style="color:rgba(255,255,255,0.45);">Building digital products by day, telling visual stories by night — where code meets cinema.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in delay-4"><button onclick="navigate('projects')" class="btn-primary font-space text-sm px-8 py-3.5 rounded-full">View My Work</button> <button onclick="navigate('contact')" class="btn-outline font-space text-sm px-8 py-3.5 rounded-full">Contact Me</button>
+      </div>
+      <div class="mt-16 fade-in delay-5" style="color:rgba(255,255,255,0.15);"><i data-lucide="chevron-down" style="width:20px;height:20px;margin:0 auto;animation:float 2s ease-in-out infinite;"></i>
+      </div>
+     </div>
+    </section>
+    <style>@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}</style>
+   </div><!-- ========== ABOUT ========== -->
+   <div id="page-about" class="page">
+    <section style="min-height:100%;padding-top:100px;padding-bottom:60px;">
+     <div class="max-w-6xl mx-auto px-6"><!-- Hero Area -->
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-20"><!-- Portrait -->
+       <div class="fade-in">
+        <div class="rounded-2xl overflow-hidden" style="aspect-ratio:3/4;background:linear-gradient(135deg,#1a1a20,#22222a);border:1px solid rgba(255,255,255,0.06);position:relative;">
+         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+          <div style="width:80px;height:80px;border-radius:50%;border:2px solid rgba(74,222,128,0.2);display:flex;align-items:center;justify-content:center;"><i data-lucide="user" style="width:36px;height:36px;color:rgba(74,222,128,0.4);"></i>
+          </div><span class="font-space text-xs" style="color:rgba(255,255,255,0.2);">Portrait</span>
+         </div>
+         <div style="position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,#0a0a0c,transparent);"></div>
+        </div>
+       </div><!-- Info -->
+       <div>
+        <div class="section-line mb-6 fade-in"></div>
+        <h2 class="font-syne font-bold text-3xl md:text-4xl mb-6 fade-in delay-1">About Me</h2>
+        <p class="font-space text-sm leading-relaxed mb-8 fade-in delay-2" id="about-text" style="color:rgba(255,255,255,0.5);">I'm a mobile developer and visual creator passionate about building digital products that solve real problems and telling stories through visuals that move people. I live at the intersection of technology and art — turning ideas into polished apps and cinematic experiences.</p>
+        <div class="grid grid-cols-2 gap-4 fade-in delay-3">
+         <div class="glow-card rounded-xl p-4">
+          <p class="text-xs font-space mb-1" style="color:rgba(255,255,255,0.3);">Age</p>
+          <p class="font-space text-sm font-medium">Young Creative</p>
+         </div>
+         <div class="glow-card rounded-xl p-4">
+          <p class="text-xs font-space mb-1" style="color:rgba(255,255,255,0.3);">Location</p>
+          <p class="font-space text-sm font-medium">Morocco</p>
+         </div>
+         <div class="glow-card rounded-xl p-4">
+          <p class="text-xs font-space mb-1" style="color:rgba(255,255,255,0.3);">Email</p>
+          <p class="font-space text-sm font-medium">hello@midb.dev</p>
+         </div>
+         <div class="glow-card rounded-xl p-4">
+          <p class="text-xs font-space mb-1" style="color:rgba(255,255,255,0.3);">Status</p>
+          <p class="font-space text-sm font-medium" style="color:#4ade80;">Available</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Skills -->
+      <div class="mb-16">
+       <div class="text-center mb-12 fade-in">
+        <div class="section-line mx-auto mb-4"></div>
+        <h3 class="font-syne font-bold text-2xl md:text-3xl">Skills &amp; Tools</h3>
+       </div><!-- Digital Product Dev -->
+       <div class="mb-12">
+        <p class="font-space text-xs tracking-[0.2em] uppercase mb-6 fade-in" style="color:#4ade80;">Digital Product Development</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+         <div class="glow-card rounded-xl p-5 text-center fade-in delay-1">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+           </svg>
+          </div>
+          <p class="font-space text-sm font-medium">Kotlin</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Android</p>
+         </div>
+         <div class="glow-card rounded-xl p-5 text-center fade-in delay-2">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="none">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-1-2H7l3-6h2l-1 2h3l-3 6z" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+           </svg>
+          </div>
+          <p class="font-space text-sm font-medium">Flutter</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Cross-platform</p>
+         </div>
+         <div class="glow-card rounded-xl p-5 text-center fade-in delay-3">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);"><i data-lucide="layout" style="width:22px;height:22px;color:#4ade80;"></i>
+          </div>
+          <p class="font-space text-sm font-medium">UI / UX</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Design</p>
+         </div>
+         <div class="glow-card rounded-xl p-5 text-center fade-in delay-4">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);"><i data-lucide="plug" style="width:22px;height:22px;color:#4ade80;"></i>
+          </div>
+          <p class="font-space text-sm font-medium">API</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Integration</p>
+         </div>
+        </div>
+       </div><!-- Visual Production -->
+       <div>
+        <p class="font-space text-xs tracking-[0.2em] uppercase mb-6 fade-in" style="color:#4ade80;">Visual Production</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+         <div class="glow-card rounded-xl p-5 text-center fade-in delay-1">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);"><i data-lucide="video" style="width:22px;height:22px;color:#4ade80;"></i>
+          </div>
+          <p class="font-space text-sm font-medium">Filmmaking</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Direction</p>
+         </div>
+         <div class="glow-card rounded-xl p-5 text-center fade-in delay-2">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);"><i data-lucide="camera" style="width:22px;height:22px;color:#4ade80;"></i>
+          </div>
+          <p class="font-space text-sm font-medium">Photography</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Storytelling</p>
+         </div>
+         <div class="glow-card rounded-xl p-5 text-center fade-in delay-3">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);"><i data-lucide="film" style="width:22px;height:22px;color:#4ade80;"></i>
+          </div>
+          <p class="font-space text-sm font-medium">Premiere Pro</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Editing</p>
+         </div>
+         <div class="glow-card rounded-xl p-5 text-center fade-in delay-4">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);"><i data-lucide="palette" style="width:22px;height:22px;color:#4ade80;"></i>
+          </div>
+          <p class="font-space text-sm font-medium">DaVinci Resolve</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Color Grading</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- ========== PROJECTS ========== -->
+   <div id="page-projects" class="page">
+    <section style="min-height:100%;padding-top:100px;padding-bottom:60px;">
+     <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 fade-in">
+       <div class="section-line mx-auto mb-4"></div>
+       <h2 class="font-syne font-bold text-3xl md:text-4xl mb-3">Selected Work</h2>
+       <p class="font-space text-sm" style="color:rgba(255,255,255,0.4);">A curated collection of digital products and visual stories</p>
+      </div><!-- Digital Products -->
+      <div class="mb-20">
+       <p class="font-space text-xs tracking-[0.2em] uppercase mb-8 fade-in" style="color:#4ade80;">Digital Product Development</p>
+       <div class="grid md:grid-cols-2 gap-6"><!-- Diquarks -->
+        <div class="glow-card rounded-2xl overflow-hidden fade-in delay-1">
+         <div class="project-img" style="aspect-ratio:16/10;">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;">
+           <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-3 rounded-xl flex items-center justify-center" style="background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.2);"><i data-lucide="sprout" style="width:28px;height:28px;color:#4ade80;"></i>
+            </div><span class="font-space text-xs" style="color:rgba(255,255,255,0.3);">App Preview</span>
+           </div>
+          </div>
+         </div>
+         <div class="p-6">
+          <h4 class="font-syne font-bold text-xl mb-2">Diquarks Agri</h4>
+          <p class="font-space text-xs leading-relaxed mb-5" style="color:rgba(255,255,255,0.4);">A smart agriculture management app designed to help farmers track crops, monitor resources, and optimize their workflows with modern mobile technology.</p><button class="btn-outline font-space text-xs px-5 py-2.5 rounded-full inline-flex items-center gap-2">View Project <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+         </div>
+        </div><!-- BestShop -->
+        <div class="glow-card rounded-2xl overflow-hidden fade-in delay-2">
+         <div class="project-img" style="aspect-ratio:16/10;">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;">
+           <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-3 rounded-xl flex items-center justify-center" style="background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.2);"><i data-lucide="shopping-bag" style="width:28px;height:28px;color:#4ade80;"></i>
+            </div><span class="font-space text-xs" style="color:rgba(255,255,255,0.3);">App Preview</span>
+           </div>
+          </div>
+         </div>
+         <div class="p-6">
+          <h4 class="font-syne font-bold text-xl mb-2">BestShop</h4>
+          <p class="font-space text-xs leading-relaxed mb-5" style="color:rgba(255,255,255,0.4);">A sleek e-commerce mobile application featuring an intuitive shopping experience, clean product browsing, and a seamless checkout flow built with modern architecture.</p><button class="btn-outline font-space text-xs px-5 py-2.5 rounded-full inline-flex items-center gap-2">View Project <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+         </div>
+        </div>
+       </div>
+      </div><!-- Visual Production -->
+      <div>
+       <p class="font-space text-xs tracking-[0.2em] uppercase mb-8 fade-in" style="color:#4ade80;">Visual Production</p>
+       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="gallery-item rounded-xl fade-in delay-1" style="aspect-ratio:1/1;background:linear-gradient(135deg,#1a1a20 0%,#1f2a1f 50%,#1a1a20 100%);border:1px solid rgba(255,255,255,0.05);">
+         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><i data-lucide="camera" style="width:28px;height:28px;color:rgba(74,222,128,0.3);"></i>
+         </div>
+         <div style="position:absolute;bottom:12px;left:12px;z-index:2;">
+          <p class="font-space text-xs font-medium">Urban Portraits</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.3);">Photography</p>
+         </div>
+        </div>
+        <div class="gallery-item rounded-xl fade-in delay-2" style="aspect-ratio:1/1;background:linear-gradient(135deg,#1a1a20 0%,#201d1a 50%,#1a1a20 100%);border:1px solid rgba(255,255,255,0.05);">
+         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><i data-lucide="video" style="width:28px;height:28px;color:rgba(74,222,128,0.3);"></i>
+         </div>
+         <div style="position:absolute;bottom:12px;left:12px;z-index:2;">
+          <p class="font-space text-xs font-medium">Short Film</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.3);">Filmmaking</p>
+         </div>
+        </div>
+        <div class="gallery-item rounded-xl fade-in delay-3" style="aspect-ratio:1/1;background:linear-gradient(135deg,#1a1a20 0%,#1a1d22 50%,#1a1a20 100%);border:1px solid rgba(255,255,255,0.05);">
+         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><i data-lucide="image" style="width:28px;height:28px;color:rgba(74,222,128,0.3);"></i>
+         </div>
+         <div style="position:absolute;bottom:12px;left:12px;z-index:2;">
+          <p class="font-space text-xs font-medium">Street Stories</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.3);">Photography</p>
+         </div>
+        </div>
+        <div class="gallery-item rounded-xl col-span-2 fade-in delay-4" style="aspect-ratio:2/1;background:linear-gradient(135deg,#1a1a20 0%,#1d1a22 50%,#1a1a20 100%);border:1px solid rgba(255,255,255,0.05);">
+         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><i data-lucide="film" style="width:36px;height:36px;color:rgba(74,222,128,0.3);"></i>
+         </div>
+         <div style="position:absolute;bottom:16px;left:16px;z-index:2;">
+          <p class="font-space text-sm font-medium">Cinematic Reel 2025</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.3);">Video Production</p>
+         </div>
+        </div>
+        <div class="gallery-item rounded-xl fade-in delay-5" style="aspect-ratio:1/1;background:linear-gradient(135deg,#1a1a20 0%,#1a221d 50%,#1a1a20 100%);border:1px solid rgba(255,255,255,0.05);">
+         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><i data-lucide="sun" style="width:28px;height:28px;color:rgba(74,222,128,0.3);"></i>
+         </div>
+         <div style="position:absolute;bottom:12px;left:12px;z-index:2;">
+          <p class="font-space text-xs font-medium">Golden Hour</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.3);">Photography</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- ========== CONTACT ========== -->
+   <div id="page-contact" class="page">
+    <section style="min-height:100%;padding-top:100px;padding-bottom:60px;">
+     <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14 fade-in">
+       <div class="section-line mx-auto mb-4"></div>
+       <h2 class="font-syne font-bold text-3xl md:text-4xl mb-3" id="contact-heading">Let's Work Together</h2>
+       <p class="font-space text-sm max-w-md mx-auto" style="color:rgba(255,255,255,0.4);">Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something remarkable.</p>
+      </div>
+      <div class="grid md:grid-cols-5 gap-10"><!-- Form -->
+       <div class="md:col-span-3 fade-in delay-1">
+        <form id="contact-form" class="space-y-5">
+         <div><label for="c-name" class="font-space text-xs mb-2 block" style="color:rgba(255,255,255,0.4);">Name</label> <input type="text" id="c-name" class="w-full rounded-xl px-4 py-3 font-space text-sm" placeholder="Your name" required>
+         </div>
+         <div><label for="c-email" class="font-space text-xs mb-2 block" style="color:rgba(255,255,255,0.4);">Email</label> <input type="email" id="c-email" class="w-full rounded-xl px-4 py-3 font-space text-sm" placeholder="your@email.com" required>
+         </div>
+         <div><label for="c-msg" class="font-space text-xs mb-2 block" style="color:rgba(255,255,255,0.4);">Message</label> <textarea id="c-msg" rows="5" class="w-full rounded-xl px-4 py-3 font-space text-sm resize-none" placeholder="Tell me about your project..." required></textarea>
+         </div><button type="submit" class="btn-primary font-space text-sm px-8 py-3.5 rounded-full w-full">Send Message</button>
+         <div id="form-success" class="hidden text-center py-3">
+          <p class="font-space text-sm" style="color:#4ade80;">✓ Message sent! I'll get back to you soon.</p>
+         </div>
+        </form>
+       </div><!-- Info -->
+       <div class="md:col-span-2 fade-in delay-2 space-y-5">
+        <div class="glow-card rounded-xl p-5">
+         <div class="flex items-center gap-3 mb-2"><i data-lucide="mail" style="width:16px;height:16px;color:#4ade80;"></i>
+          <p class="font-space text-xs" style="color:rgba(255,255,255,0.4);">Email</p>
+         </div>
+         <p class="font-space text-sm">hello@midb.dev</p>
+        </div>
+        <div class="glow-card rounded-xl p-5">
+         <div class="flex items-center gap-3 mb-2"><i data-lucide="map-pin" style="width:16px;height:16px;color:#4ade80;"></i>
+          <p class="font-space text-xs" style="color:rgba(255,255,255,0.4);">Location</p>
+         </div>
+         <p class="font-space text-sm">Morocco</p>
+        </div>
+        <div class="glow-card rounded-xl p-5">
+         <div class="flex items-center gap-3 mb-3"><i data-lucide="link" style="width:16px;height:16px;color:#4ade80;"></i>
+          <p class="font-space text-xs" style="color:rgba(255,255,255,0.4);">Socials</p>
+         </div>
+         <div class="flex gap-3"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center glow-card"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a> <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center glow-card"><i data-lucide="linkedin" style="width:16px;height:16px;"></i></a> <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center glow-card"><i data-lucide="github" style="width:16px;height:16px;"></i></a> <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center glow-card"><i data-lucide="youtube" style="width:16px;height:16px;"></i></a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Footer -->
+   <footer class="w-full py-6 text-center" style="border-top:1px solid rgba(255,255,255,0.04);">
+    <p class="font-space text-xs" style="color:rgba(255,255,255,0.2);">© 2025 Mouatassime ID Bourhim. All rights reserved.</p>
+   </footer>
+  </div>
+  <script>
+// Navigation
+let currentPage = 'home';
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('[data-nav]').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('[data-nav="' + page + '"]').forEach(l => l.classList.add('active'));
+  document.getElementById('app').scrollTop = 0;
+  currentPage = page;
+  // Re-trigger animations
+  document.getElementById('page-' + page).querySelectorAll('.fade-in').forEach(el => {
+    el.style.animation = 'none';
+    el.offsetHeight;
+    el.style.animation = '';
+  });
+  lucide.createIcons();
+}
+
+function toggleMobile() {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+}
+
+// Contact form
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  this.querySelector('button[type="submit"]').textContent = 'Sending...';
+  setTimeout(() => {
+    this.querySelector('button[type="submit"]').textContent = 'Send Message';
+    document.getElementById('form-success').classList.remove('hidden');
+    this.reset();
+    setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 3000);
+  }, 1000);
+});
+
+// Element SDK
+const defaultConfig = {
+  background_color: '#0a0a0c',
+  surface_color: '#1a1a20',
+  text_color: '#e4e4e7',
+  primary_action_color: '#4ade80',
+  secondary_action_color: 'rgba(255,255,255,0.15)',
+  font_family: 'Syne',
+  font_size: 16,
+  hero_tagline: 'Building digital products by day, telling visual stories by night — where code meets cinema.',
+  about_text: "I'm a mobile developer and visual creator passionate about building digital products that solve real problems and telling stories through visuals that move people. I live at the intersection of technology and art — turning ideas into polished apps and cinematic experiences.",
+  contact_heading: "Let's Work Together"
+};
+
+function applyConfig(config) {
+  const el = (id) => document.getElementById(id);
+  if (el('hero-tagline')) el('hero-tagline').textContent = config.hero_tagline || defaultConfig.hero_tagline;
+  if (el('about-text')) el('about-text').textContent = config.about_text || defaultConfig.about_text;
+  if (el('contact-heading')) el('contact-heading').textContent = config.contact_heading || defaultConfig.contact_heading;
+
+  const font = config.font_family || defaultConfig.font_family;
+  document.querySelectorAll('.font-syne').forEach(e => e.style.fontFamily = font + ', sans-serif');
+
+  const size = config.font_size || defaultConfig.font_size;
+  document.querySelectorAll('.font-syne').forEach(e => {
+    const current = parseFloat(getComputedStyle(e).fontSize);
+    if (current > 30) e.style.fontSize = (size * 2.5) + 'px';
+    else if (current > 20) e.style.fontSize = (size * 1.5) + 'px';
+  });
+}
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange: async (config) => { applyConfig(config); },
+  mapToCapabilities: (config) => ({
+    recolorables: [
+      { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }},
+      { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }},
+      { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }},
+      { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); }},
+    ],
+    borderables: [],
+    fontEditable: {
+      get: () => config.font_family || defaultConfig.font_family,
+      set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+    },
+    fontSizeable: {
+      get: () => config.font_size || defaultConfig.font_size,
+      set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+    }
+  }),
+  mapToEditPanelValues: (config) => new Map([
+    ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+    ['about_text', config.about_text || defaultConfig.about_text],
+    ['contact_heading', config.contact_heading || defaultConfig.contact_heading]
+  ])
+});
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e810cd965a4a60e',t:'MTc3NTQ4MTIxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html> 
